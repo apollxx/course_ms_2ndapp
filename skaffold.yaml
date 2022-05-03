@@ -8,9 +8,9 @@ build:
   # local:
   #  push: false
   googleCloudBuild:
-    projectId: ticketing-dev-348112
+    projectId: 	ticketing-dev2-348922
   artifacts:
-    - image: us.gcr.io/ticketing-dev-348112/auth
+    - image: us.gcr.io/ticketing-dev2-348922/auth
       context: auth
       docker:
         dockerfile: Dockerfile
@@ -18,7 +18,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/ticketing-dev-348112/tickets
+    - image: us.gcr.io/ticketing-dev2-348922/tickets
       context: tickets
       docker:
         dockerfile: Dockerfile
@@ -26,7 +26,7 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
-    - image: us.gcr.io/ticketing-dev-348112/client
+    - image: us.gcr.io/ticketing-dev2-348922/client
       context: client
       docker:
         dockerfile: Dockerfile
@@ -34,7 +34,7 @@ build:
         manual:
           - src: '**/*.js'
             dest: .
-    - image: us.gcr.io/ticketing-dev-348112/orders
+    - image: us.gcr.io/ticketing-dev2-348922/orders
       context: orders
       docker:
         dockerfile: Dockerfile

@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: orders
-          image: us.gcr.io/ticketing-dev-348112/orders
+          image: us.gcr.io/ticketing-dev2-348922/orders
           env: 
             - name: MONGO_URI
               value: mongodb://orders-mongo-srv:27017/orders
@@ -24,7 +24,7 @@ spec:
                   name: jwt-secret
                   key: JWT_KEY
             - name: NATS_URL
-              value: 'htp://nats-srv:4222'
+              value: 'http://nats-srv:4222'
             - name: NATS_CLUSTER_ID
               value: ticketing
             - name: NATS_CLIENT_ID

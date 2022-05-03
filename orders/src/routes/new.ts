@@ -4,7 +4,7 @@ import { BadRequestError, NotFoundError, OrderStatus, requireAuth, validateReque
 import { body } from 'express-validator'
 import { Ticket } from '../models/ticket'
 import { Order } from '../models/order'
-import { OrderCreatedPublisher } from '../events/order-created-publish';
+import { OrderCreatedPublisher } from '../events/publishers/order-created-publish';
 import { natsWrapper } from '../nats-wrapper';
 
 
@@ -42,6 +42,7 @@ router.post("/api/orders", requireAuth, [
         status: order.status,
         userId: order.userId,
         expiresAt: order.expiresAt.toISOString(),
+        version: order.version,
         ticket: {
             id: ticket.id,
             price: ticket.price

@@ -5,6 +5,7 @@ import {
     NotFoundError,
     requireAuth,
     NotAuthorizedError,
+    BadRequestError,
 } from '@apollxx_tck/common';
 import { Ticket } from '../models/ticket';
 import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
@@ -29,6 +30,10 @@ router.put(
 
         if (!ticket) throw new NotFoundError();
 
+        if (ticket.orderId) {
+            throw new BadRequestError('Cannot edit a reserved ticket')
+        }
+
         if (ticket.userId !== req.currentUser!.id) throw new NotAuthorizedError();
 
         ticket.set({
@@ -41,7 +46,8 @@ router.put(
             id: ticket.id,
             title: ticket.title,
             price: ticket.price,
-            userdId: ticket.userId
+            userdId: ticket.userId,
+            version: ticket.version
         })
 
         res.send(ticket);
