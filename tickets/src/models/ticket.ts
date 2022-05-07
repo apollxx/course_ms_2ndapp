@@ -38,6 +38,7 @@ const ticketSchema = new mongoose.Schema({
 }, {
     toJSON: {
         transform(doc, ret) {
+            // ret is return value
             ret.id = ret._id;
             delete ret._id;
         }
