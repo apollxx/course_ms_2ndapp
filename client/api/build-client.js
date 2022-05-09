@@ -1,9 +1,9 @@
 import axios from 'axios'
-
+/* 'ticketing-ms-app-prod.xyz' */
 const buildClient = ({ req }) => {
     if (typeof window === 'undefined') {
         return axios.create({
-            baseURL: 'ticketing-ms-app-prod.xyz'/* http://ingress-nginx-controller.ingress-nginx.svc.cluster.local */,
+            baseURL: "http://www.ticketing-ms-app-prod.xyz",
             headers: req.headers
         })
     } else {
@@ -12,7 +12,8 @@ const buildClient = ({ req }) => {
         })
     }
 };
-
+/* http://ingress-nginx-controller.ingress-nginx.svc.cluster.local
+ */
 export default buildClient;
 
 
